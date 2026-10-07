@@ -1,0 +1,251 @@
+<title>Quick Apps LLC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: single navy world from the brand icon; left-aligned hero with the Q mark large on the right, then a services grid, a 4-step process rail, and a yellow contact band. */
+:root {
+  --navy: #0F2A4A;
+  --navy-deep: #0A1F38;
+  --navy-line: #24476F;
+  --ink: #FFFFFF;
+  --muted: #A9BCD3;
+  --bolt: #FDE047;
+  --cyan: #22C3E6;
+  --display: "Bricolage Grotesque", "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+  --body: "DM Sans", "Helvetica Neue", Arial, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { background: var(--navy); }
+body {
+  background: var(--navy);
+  color: var(--ink);
+  font: 400 1.0625rem/1.6 var(--body);
+  padding-inline: 20px;
+  overflow-x: hidden;
+}
+.wrap { max-width: 1120px; margin-inline: auto; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--bolt); outline-offset: 3px; border-radius: 6px; }
+
+/* Header */
+header { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 24px; }
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.brand svg { width: 44px; height: 44px; flex: none; }
+.wordmark { font: 800 1.45rem/1 var(--display); letter-spacing: -0.02em; }
+.wordmark span { color: var(--cyan); }
+.wordmark small { display: block; font: 500 0.62rem/1 var(--mono); letter-spacing: 0.35em; color: var(--muted); margin-top: 5px; }
+nav { display: flex; gap: 28px; font-weight: 500; font-size: 0.95rem; }
+nav a { text-decoration: none; color: var(--muted); transition: color .15s; }
+nav a:hover { color: var(--ink); }
+
+/* Hero */
+.hero { display: grid; grid-template-columns: 1.25fr 1fr; align-items: center; gap: 48px; padding-block: 56px 88px; }
+.hero > div { min-width: 0; }
+.eyebrow { font: 500 0.78rem/1 var(--mono); letter-spacing: 0.18em; text-transform: uppercase; color: var(--bolt); }
+h1 {
+  font: 800 clamp(2.6rem, 6.4vw, 5rem)/0.98 var(--display);
+  letter-spacing: -0.035em;
+  margin: 18px 0 22px;
+  text-wrap: balance;
+}
+h1 em { font-style: normal; color: var(--bolt); }
+.lede { color: var(--muted); font-size: 1.15rem; max-width: 34ch; margin: 0 0 32px; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 22px; border-radius: 999px;
+  font: 700 1rem/1 var(--body); text-decoration: none;
+  transition: transform .15s, background .15s;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn-primary { background: var(--bolt); color: var(--navy); }
+.btn-ghost { border: 1.5px solid var(--navy-line); color: var(--ink); }
+.btn-ghost:hover { background: var(--navy-deep); }
+
+.mark { position: relative; justify-self: center; width: min(100%, 400px); aspect-ratio: 1; max-width: 100%; }
+.mark::before {
+  content: ""; position: absolute; inset: 8%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(253,224,71,.16), transparent 65%);
+}
+.mark svg { position: relative; width: 100%; height: 100%; }
+.bolt { transform-origin: 78px 84px; animation: strike 1.1s cubic-bezier(.2,.9,.3,1.3) .2s both; }
+@keyframes strike {
+  0% { transform: translate(14px,-18px) scale(.6); opacity: .25; }
+  60% { opacity: 1; }
+  100% { transform: none; opacity: 1; }
+}
+
+/* Sections */
+section { padding-block: 72px; border-top: 1px solid var(--navy-line); }
+h2 { font: 800 clamp(1.9rem, 4vw, 2.75rem)/1.05 var(--display); letter-spacing: -0.03em; margin: 12px 0 14px; text-wrap: balance; }
+.section-intro { color: var(--muted); max-width: 56ch; margin: 0 0 40px; }
+
+.services { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.service { background: var(--navy-deep); border: 1px solid var(--navy-line); border-radius: 20px; padding: 28px; min-width: 0; }
+.service svg { width: 36px; height: 36px; }
+.service h3 { font: 700 1.3rem/1.2 var(--display); margin: 18px 0 8px; }
+.service p { margin: 0; color: var(--muted); font-size: 0.98rem; }
+
+.steps { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; counter-reset: step; }
+.steps li { position: relative; padding: 28px 24px 0 0; border-top: 2px solid var(--navy-line); min-width: 0; }
+.steps li::before {
+  counter-increment: step; content: counter(step, decimal-leading-zero);
+  position: absolute; top: -13px; left: 0;
+  background: var(--navy); padding-right: 10px;
+  font: 500 0.8rem/24px var(--mono); color: var(--bolt); letter-spacing: .1em;
+}
+.steps li:last-child { border-top-color: var(--bolt); }
+.steps h3 { font: 700 1.2rem/1.2 var(--display); margin: 0 0 8px; }
+.steps p { margin: 0; color: var(--muted); font-size: 0.96rem; }
+
+.contact {
+  margin-block: 24px 64px; border: 0;
+  background: var(--bolt); color: var(--navy);
+  border-radius: 28px; padding: 56px clamp(24px, 5vw, 64px);
+  display: grid; grid-template-columns: 1.4fr 1fr; gap: 32px; align-items: center;
+}
+.contact > div { min-width: 0; }
+.contact .eyebrow { color: var(--navy); opacity: .7; }
+.contact h2 { margin-bottom: 10px; }
+.contact p { margin: 0; font-size: 1.08rem; }
+.email-box { background: var(--navy); color: var(--ink); border-radius: 18px; padding: 22px; display: grid; gap: 12px; }
+.email-box span { font: 500 0.72rem/1 var(--mono); letter-spacing: .18em; text-transform: uppercase; color: var(--muted); }
+.email-row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.email-row code { font: 500 1.05rem/1.3 var(--mono); user-select: all; overflow-wrap: anywhere; flex: 1; min-width: 0; }
+.copy { background: var(--bolt); color: var(--navy); border: 0; border-radius: 999px; padding: 9px 16px; font: 700 0.9rem/1 var(--body); cursor: pointer; }
+
+footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding-block: 0 40px; color: var(--muted); font-size: 0.9rem; }
+
+@media (max-width: 860px) {
+  nav { display: none; }
+  .hero { grid-template-columns: 1fr; padding-block: 24px 64px; gap: 32px; }
+  .mark { display: none; }
+  .services { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: 1fr 1fr; row-gap: 40px; }
+  .contact { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) { .steps { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { .bolt { animation: none; } .btn { transition: none; } }
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <mask id="cut" maskUnits="userSpaceOnUse" x="0" y="0" width="120" height="120">
+      <rect width="120" height="120" fill="#fff"/>
+      <polygon points="70,64 88,64 79,77 96,77 66,104 75,85 60,85" fill="#000" stroke="#000" stroke-width="10" stroke-linejoin="round"/>
+    </mask>
+  </defs>
+</svg>
+
+<div class="wrap">
+  <header>
+    <a class="brand" href="#top" aria-label="Quick Apps LLC home">
+      <svg viewBox="0 0 120 120" aria-hidden="true">
+        <rect width="120" height="120" rx="28" fill="#0F2A4A" stroke="#24476F" stroke-width="3"/>
+        <circle cx="56" cy="56" r="28" fill="none" stroke="#fff" stroke-width="13" mask="url(#cut)"/>
+        <polygon points="70,64 88,64 79,77 96,77 66,104 75,85 60,85" fill="#FDE047" stroke="#FDE047" stroke-width="2" stroke-linejoin="round"/>
+      </svg>
+      <div class="wordmark">Quick<span>Apps</span><small>LLC</small></div>
+    </a>
+    <nav aria-label="Main">
+      <a href="#services">What we do</a>
+      <a href="#process">How we work</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <div class="hero">
+      <div>
+        <div class="eyebrow">Welcome to Quick Apps</div>
+        <h1>Get more done, <em>with less effort.</em></h1>
+        <p class="lede">We create high-tech and low-tech solutions that help your business run more efficiently. Sometimes the answer is new software. Sometimes it's a simpler way of working.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="mailto:admin@quiqapps.com">Contact us</a>
+          <a class="btn btn-ghost" href="#services">See what we do</a>
+        </div>
+      </div>
+      <div class="mark" aria-hidden="true">
+        <svg viewBox="0 0 120 120">
+          <circle cx="56" cy="56" r="28" fill="none" stroke="#fff" stroke-width="13" mask="url(#cut)"/>
+          <polygon class="bolt" points="70,64 88,64 79,77 96,77 66,104 75,85 60,85" fill="#FDE047" stroke="#FDE047" stroke-width="2" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </div>
+
+    <section id="services">
+      <div class="eyebrow">What we do</div>
+      <h2>The right fix, high-tech or low-tech</h2>
+      <p class="section-intro">We don't start with a tool in mind. We start with what's slowing you down, then pick the simplest solution that solves it.</p>
+      <div class="services">
+        <article class="service">
+          <svg viewBox="0 0 36 36" fill="none" stroke="#FDE047" stroke-width="2.5" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="20" r="12"/><path d="M18 20l6-6M14 3h8" stroke-linecap="round"/></svg>
+          <h3>Efficiency review</h3>
+          <p>We look at how work actually gets done today and find where time and money are being lost.</p>
+        </article>
+        <article class="service">
+          <svg viewBox="0 0 36 36" fill="none" stroke="#FDE047" stroke-width="2.5" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="30" height="22" rx="3"/><path d="M3 12h30M13 33h10" stroke-linecap="round"/></svg>
+          <h3>High-tech solutions</h3>
+          <p>Custom apps, automations and software tools that take repetitive work off your team's plate.</p>
+        </article>
+        <article class="service">
+          <svg viewBox="0 0 36 36" fill="none" stroke="#FDE047" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><rect x="7" y="5" width="22" height="28" rx="3"/><path d="M13 3h10v5H13zM12 16l2 2 4-4M12 25l2 2 4-4M21 17h3M21 26h3"/></svg>
+          <h3>Low-tech solutions</h3>
+          <p>Better checklists, workflows, layouts and routines. Simple changes that work without new software.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="process">
+      <div class="eyebrow">How we work</div>
+      <h2>From first look to lasting results</h2>
+      <p class="section-intro">Every project follows the same four steps, and you see progress at each one.</p>
+      <ol class="steps">
+        <li><h3>Observe</h3><p>We learn how your team works today and where the slowdowns are.</p></li>
+        <li><h3>Plan</h3><p>We recommend the right mix of high-tech and low-tech fixes, with a clear scope and timeline.</p></li>
+        <li><h3>Build</h3><p>We put the solution in place, whether that's new software or a new way of working.</p></li>
+        <li><h3>Measure</h3><p>We check the results with you and fine-tune until the time savings are real.</p></li>
+      </ol>
+    </section>
+
+    <section class="contact" id="contact">
+      <div>
+        <div class="eyebrow">Let's talk</div>
+        <h2>Something taking too long?</h2>
+        <p>Tell us what's slowing your business down and we'll get back to you to set up a call.</p>
+      </div>
+      <div class="email-box">
+        <span>Email us</span>
+        <div class="email-row">
+          <code id="email">admin@quiqapps.com</code>
+          <button class="copy" id="copy" type="button">Copy</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>© <span id="year">2026</span> Quick Apps LLC · quiqapps.com</span>
+    <span>High-tech and low-tech solutions for a more efficient business.</span>
+  </footer>
+</div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  const btn = document.getElementById('copy');
+  btn.addEventListener('click', () => {
+    const text = document.getElementById('email').textContent;
+    const done = () => { btn.textContent = 'Copied'; setTimeout(() => btn.textContent = 'Copy', 1600); };
+    try {
+      navigator.clipboard.writeText(text).then(done, select);
+    } catch (e) { select(); }
+    function select() {
+      const r = document.createRange(); r.selectNodeContents(document.getElementById('email'));
+      const s = getSelection(); s.removeAllRanges(); s.addRange(r);
+      btn.textContent = 'Press ⌘C';
+    }
+  });
+</script>
